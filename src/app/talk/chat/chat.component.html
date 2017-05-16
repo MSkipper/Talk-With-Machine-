@@ -37,6 +37,13 @@
           </div>
 
         </div>
+
+        <label for="sel1">Select language</label>
+        <select class="form-control" id="sel1" [(ngModel)]="selectedLang">
+          <option *ngFor="let lang of languages" >{{ lang }}</option>
+        </select>
+
+        <br />
         <div class="chat-bottom-bar">
           <form #f="ngForm"
                 (ngSubmit)="onSubmit(f.value)"

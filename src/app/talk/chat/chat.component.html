@@ -32,6 +32,7 @@
                   <span class="date">{{ message.date | date }}</span>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -45,10 +46,10 @@
               <input type="text"
                      id="queryInput"
                      placeholder="Ask me anything !"
-                     name="query" ngModel>
+                     name="query" [(ngModel)]="query">
             </div>
 
-            <button type="submit" class="ui button">Send</button>
+            <button type="submit" class="ui button" [disabled]="waitForResponse">Send</button>
           </form>
         </div>
       </div>

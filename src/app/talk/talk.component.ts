@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TalkService} from "./talk.service";
-import {IMessage} from "./chat/chat.component";
+import {IMessage, IQuery} from "./chat/chat.component";
 
 @Component({
   selector: 'app-talk',

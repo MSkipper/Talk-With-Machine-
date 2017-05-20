@@ -10,6 +10,7 @@ import { TalkComponent } from './talk/talk.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SpeechComponent } from './talk/speech/speech.component';
 import { ChatComponent } from './talk/chat/chat.component';
+import { SpeechRecognitionService } from './talk/speech/speech-recognition.service';
 
 const appRoutes: Routes = [
   { path: 'talk', component: TalkComponent },
@@ -35,7 +36,9 @@ const appRoutes: Routes = [
     HttpModule,
     JsonpModule
   ],
-  providers: [],
+  providers: [
+    SpeechRecognitionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

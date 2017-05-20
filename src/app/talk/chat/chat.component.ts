@@ -6,6 +6,10 @@ export interface IMessage {
   isUser: boolean
 }
 
+export interface IQuery {
+  query: string
+}
+
 export interface IWindow extends Window{
   responsiveVoice: any
 }
@@ -29,18 +33,15 @@ export class ChatComponent implements OnInit, OnChanges {
   constructor(@Inject('Window') private window: IWindow) {
   }
 
-
-
-
-  private onSubmit= (value) => {
-  this.waitForResponse = true;
-  this.messages.push({
-    text: value.query,
-    date: new Date(),
-    isUser: true
-  });
-  this.queryCallback.emit(value);
-  this.query = ''
+  @Input() onSubmit = (value) => {
+    this.waitForResponse = true;
+    this.messages.push({
+      text: value.query,
+      date: new Date(),
+      isUser: true
+    });
+    this.queryCallback.emit(value);
+    this.query = ''
 };
 
   ngOnInit() {
@@ -48,16 +49,24 @@ export class ChatComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes.message) {
-      this.window.responsiveVoice.speak(this.message.text, this.selectedLang, {
-        onend: () => {
-          this.waitForResponse = false;
-        }});
-      this.messages.push({
-        text: this.message.text,
-        date: new Date(),
-        isUser: false
-      });
+      if (this.message) {
+        this.speak(this.message.text,this.selectedLang);
+        this.messages.push({
+          text: this.message.text,
+          date: new Date(),
+          isUser: false
+        });
+      }
     }
+  }
+
+  @Input()
+  speak(text: string, lang: string ) {
+    this.window.responsiveVoice.speak(text, lang, {
+      onend: () => {
+        this.waitForResponse = false;
+      }
+    });
   }
 
 }

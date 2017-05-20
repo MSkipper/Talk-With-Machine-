@@ -8,11 +8,11 @@
     <h3>Talk With ME !</h3>
   </div>
   <div>
-    <mt-speech></mt-speech>
+    <mt-speech (messageCallback)="chat.onSubmit($event)" (speakCallback)="chat.speak($event.text, $event.lang)"></mt-speech>
   </div>
 </div>
 <div class="container">
   <div>
-  <mt-chat (queryCallback)="sendQuery($event)" class="flex-center" [selectedLang]="selectedLang" [message]="message"></mt-chat>
+  <mt-chat #chat (queryCallback)="sendQuery($event)" class="flex-center" [selectedLang]="selectedLang" [message]="message"></mt-chat>
   </div>
 </div>

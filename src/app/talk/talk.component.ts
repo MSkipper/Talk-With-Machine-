@@ -22,11 +22,65 @@ export class TalkComponent implements OnInit {
     });
   };
 
+  // TODO Voice api service
+  languages: Array<String> = [
+    'UK English Female',
+    'UK English Male',
+    'US English Female',
+    'Spanish Female',
+    'French Female',
+    'Deutsch Female',
+    'Italian Female',
+    'Greek Female',
+    'Hungarian Female',
+    'Turkish Female',
+    'Russian Female',
+    'Dutch Female',
+    'Swedish Female',
+    'Norwegian Female',
+    'Japanese Female',
+    'Korean Female',
+    'Chinese Female',
+    'Hindi Female',
+    'Serbian Male',
+    'Croatian Male',
+    'Bosnian Male',
+    'Romanian Male',
+    'Catalan Male',
+    'Australian Female',
+    'Finnish Female',
+    'Afrikaans Male',
+    'Albanian Male',
+    'Arabic Male',
+    'Armenian Male',
+    'Czech Female',
+    'Danish Female',
+    'Esperanto Male',
+    'Hatian Creole Female',
+    'Icelandic Male',
+    'Indonesian Female',
+    'Latin Female',
+    'Latvian Male',
+    'Macedonian Male',
+    'Moldavian Male',
+    'Montenegrin Male',
+    'Polish Female',
+    'Brazilian Portuguese Female',
+    'Portuguese Female',
+    'Serbo-Croatian Male',
+    'Slovak Female',
+    'Spanish Latin American Female',
+    'Swahili Male',
+    'Tamil Male',
+    'Thai Female',
+    'Vietnamese Male',
+    'Welsh Male'
+  ];
+
   constructor(private TalkService: TalkService) {
   }
 
   ngOnInit() {
-
   }
 
 }

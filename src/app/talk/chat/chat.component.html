@@ -1,65 +1,17 @@
-<div class="row chat-window col-xs-5 col-md-3 ">
-  <div class="col-xs-12 col-md-12">
-    <div class="panel">
-      <div class="panel-heading chat-top-bar">
-        <div class="col-md-8 col-xs-8">
-          <h3 class="panel-title">Talk With Me</h3>
-        </div>
-        <div class="col-md-4 col-xs-4 window-actions" style="text-align: right;">
-          <span class="fa"></span>
-        </div>
-      </div>
-      <div class="panel-body" >
-        <div class="msg-container-base">
-
-          <div class="row msg-container" *ngFor="let message of messages">
-            <div class="col-md-12 col-xs-12">
-
-              <div class="chat-msg" *ngIf="message.isUser">
-                <img  class="profile"/>
-                <p>{{ message.text }}</p>
-                <div class="chat-msg-author">
-                  <strong>You</strong>&nbsp;
-                  <span class="date">{{ message.date | date }}</span>
-                </div>
-              </div>
-
-              <div class="chat-msg" *ngIf="!message.isUser">
-                <img  class="profile"/>
-                <p>{{ message.text }}</p>
-                <div class="chat-msg-author">
-                  <strong>CleverBot</strong>&nbsp;
-                  <span class="date">{{ message.date | date }}</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        <label for="sel1">Select language</label>
-        <select class="form-control" id="sel1" [(ngModel)]="selectedLang">
-          <option *ngFor="let lang of languages" >{{ lang }}</option>
-        </select>
-
-        <br />
-        <div class="chat-bottom-bar">
-          <form #f="ngForm"
-                (ngSubmit)="onSubmit(f.value)"
-                class="ui form">
-
-            <div class="field">
-              <input type="text"
-                     id="queryInput"
-                     placeholder="Ask me anything !"
-                     name="query" [(ngModel)]="query">
-            </div>
-
-            <button type="submit" class="ui button" [disabled]="waitForResponse">Send</button>
-          </form>
-        </div>
-      </div>
+<ol class="chat">
+  <li *ngFor="let message of messages" [ngClass]="{'self': message.isUser, 'other': message.isUser }">
+    <div class="avatar" *ngIf="!message.isUser"><img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png" draggable="false"/></div>
+    <div class="avatar" *ngIf="message.isUser"><img src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" draggable="false"/></div>
+    <div class="msg">
+      <p>{{ message.text }}</p>
+      <time>{{ message.date | date: 'hh:mm:ss' }}</time>
     </div>
-  </div>
-</div>
+  </li>
+</ol>
+<form #f="ngForm"
+      (ngSubmit)="onSubmit(f.value)">
+<input class="textarea" id="queryInput"
+       placeholder="Ask me anything !"
+       name="query" [(ngModel)]="query"  autocomplete="off">
+  <!--<button type="submit" class="ui button" [disabled]="waitForResponse">Send</button>-->
+</form>

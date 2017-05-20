@@ -1,2 +1,18 @@
-<h1>Talk With ME !</h1>
-<mt-chat (queryCallback)="sendQuery($event)" [message]="message"></mt-chat>
+<div class=" label">
+  <div>
+    <select class="form-control" id="sel1" [(ngModel)]="selectedLang">
+      <option *ngFor="let lang of languages" >{{ lang }}</option>
+    </select>
+  </div>
+  <div>
+    <h3>Talk With ME !</h3>
+  </div>
+  <div>
+    <mt-speech></mt-speech>
+  </div>
+</div>
+<div class="container">
+  <div>
+  <mt-chat (queryCallback)="sendQuery($event)" class="flex-center" [selectedLang]="selectedLang" [message]="message"></mt-chat>
+  </div>
+</div>

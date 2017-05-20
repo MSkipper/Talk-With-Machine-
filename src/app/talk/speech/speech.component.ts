@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-speech',
+  selector: 'mt-speech',
   templateUrl: './speech.component.html',
   styleUrls: ['./speech.component.css']
 })

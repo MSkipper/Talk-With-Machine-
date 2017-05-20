@@ -5,15 +5,10 @@
 <div>
     <div class="col-xs-10">
         <select class="form-control" id="sel1" [(ngModel)]="selectedDialect">
-            <ng-container *ngFor="let country of speechRecognitionService.langs">
-                <ng-container *ngIf="country.length > 2">
-                    <optgroup label="{{ country[0] }}">
-                        <option value="{{dialect[0]}}" *ngFor="let dialect of country|slice:1">{{ dialect[1] }}</option>
-                    </optgroup>
-                </ng-container>
-                <ng-container *ngIf="country.length === 2">
-                    <option value="{{country[1]}}">{{ country[0] }}</option>
-                </ng-container>
+            <ng-container *ngFor="let speechLanguage of speechRecognitionService.speechLanguages">
+                <optgroup label="{{ speechLanguage.name }}">
+                    <option *ngFor="let dialect of speechLanguage.dialects" value="{{ dialect.code }}">{{ dialect.name }}</option>
+                </optgroup>
             </ng-container>
         </select>
     </div>

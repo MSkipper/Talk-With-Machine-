@@ -143,12 +143,12 @@ export class SpeechRecognitionService {
             };
 
             this.speechRecognition.onend = () => {
-                observer.complete();
+                this.zone.run(() => {
+                    observer.complete();
+                });
             };
 
             this.speechRecognition.start();
-
-            // console.log("Say something - We are listening !!!");
         });
     }
     stop() {

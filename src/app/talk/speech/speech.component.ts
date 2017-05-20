@@ -51,7 +51,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
               }
             },
             () => {
-              this.activateSpeech();
+              // this.activateSpeech();
             }
         );
   }

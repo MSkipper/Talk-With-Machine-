@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SpeechComponent } from './talk/speech/speech.component';
 import { ChatComponent } from './talk/chat/chat.component';
 import { SpeechRecognitionService } from './talk/speech/speech-recognition.service';
+import {CollapseDirective} from "ng2-bootstrap";
 
 const appRoutes: Routes = [
   { path: 'talk', component: TalkComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     AboutComponent,
     TalkComponent,
     SpeechComponent,
-    ChatComponent
+    ChatComponent,
+    CollapseDirective
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -41,4 +43,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

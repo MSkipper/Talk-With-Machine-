@@ -35,25 +35,23 @@ export class SpeechComponent implements OnInit, OnDestroy {
 
     this.speechRecognitionService.record(this.selectedDialect)
         .subscribe(
-            //listener
             (value) => {
               if (value.length) {
                 this.messageCallback.emit({query: value});
               }
-              this.recording = false;
-
+              this.activateSpeech();
             },
             (err) => {
-              this.recording = false;
-
-              // console.log(err);
+              console.log(err);
               if (err.error == "no-speech") {
+                this.recording = false;
                 this.speakCallback.emit({text: "Nie wykryłem mowy. Wyłączam mikrofon.", lang: "Polish Female"});
+              } else {
+
               }
             },
-            //completion
             () => {
-              this.recording = false;
+              this.activateSpeech();
             }
         );
   }

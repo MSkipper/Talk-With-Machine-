@@ -2,11 +2,10 @@ h1 {
   text-align: center;
 }
 
-.label {
+.talk-navbar {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  top: 50px;
   left: 0px;
   right: 0px;
   width: 100%;
@@ -19,7 +18,7 @@ h1 {
   -ms-user-select: none;
 }
 
-.label div {
+.talk-navbar div {
   display: flex;
   flex-direction: column;
   justify-content: center;

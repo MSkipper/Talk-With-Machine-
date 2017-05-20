@@ -4,11 +4,9 @@
 <div>
     <div class="col-xs-10">
         <select class="form-control" id="sel1" [(ngModel)]="selectedDialect">
-            <ng-container *ngFor="let speechLanguage of speechRecognitionService.speechLanguages">
-                <optgroup label="{{ speechLanguage.name }}">
-                    <option *ngFor="let dialect of speechLanguage.dialects" value="{{ dialect.code }}">{{ dialect.name }}</option>
-                </optgroup>
-            </ng-container>
+            <optgroup label="{{ speechLanguage.name }}"  *ngFor="let speechLanguage of speechRecognitionService.speechLanguages">
+                <option *ngFor="let dialect of speechLanguage.dialects" value="{{ dialect.code }}">{{ dialect.name }}</option>
+            </optgroup>
         </select>
     </div>
     <div class="col-xs-2 mic-div">

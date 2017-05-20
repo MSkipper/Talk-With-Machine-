@@ -1,13 +1,13 @@
-<div class=" label">
-  <div>
+<div class="talk-navbar">
+  <div class="col-md-4">
     <select class="form-control" id="sel1" [(ngModel)]="selectedLang">
       <option *ngFor="let lang of languages" >{{ lang }}</option>
     </select>
   </div>
-  <div>
+  <div class="col-md-4">
     <h3>Talk With ME !</h3>
   </div>
-  <div>
+  <div class="col-md-4">
     <mt-speech (messageCallback)="chat.onSubmit($event)" (speakCallback)="chat.speak($event.text, $event.lang)"></mt-speech>
   </div>
 </div>

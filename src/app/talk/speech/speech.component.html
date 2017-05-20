@@ -2,9 +2,6 @@
     <title>mic2</title>
 <svg:path d="M15 22c2.761 0 5-2.239 5-5v-12c0-2.761-2.239-5-5-5s-5 2.239-5 5v12c0 2.761 2.239 5 5 5zM22 14v3c0 3.866-3.134 7-7 7s-7-3.134-7-7v-3h-2v3c0 4.632 3.5 8.447 8 8.944v4.056h-4v2h10v-2h-4v-4.056c4.5-0.497 8-4.312 8-8.944v-3h-2z"></svg:path>
 </svg:symbol>
-<!--<div class="round-button-circle">-->
-<!--<a class="round-button" (click)="activateSpeechSearchMovie()">Click And Speak {{selectedDialect}}</a>-->
-<!--</div>-->
 <div>
     <div class="col-xs-10">
         <select class="form-control" id="sel1" [(ngModel)]="selectedDialect">
@@ -21,8 +18,7 @@
         </select>
     </div>
     <div class="col-xs-2 mic-div">
-        <div [ngClass]="recording === true ? 'pulse' : ''"></div>
-        <svg class="mic-icon icon-mic2" (click)="(recording===true)?stopSpeach():activateSpeech()">
+        <svg [class.pulse]="recording" class="mic-icon icon-mic2" (click)="(recording===true)?stopSpeach():activateSpeech()">
             <use xlink:href="#icon-mic2"></use>
         </svg>
     </div>

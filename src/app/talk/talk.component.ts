@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TalkService} from "./talk.service";
 import {IMessage, IQuery} from "./chat/chat.component";
+import {document} from "ng2-bootstrap/utils/facade/browser";
 
 @Component({
   selector: 'app-talk',
@@ -8,7 +9,7 @@ import {IMessage, IQuery} from "./chat/chat.component";
   styleUrls: ['./talk.component.css'],
   providers: [TalkService]
 })
-export class TalkComponent implements OnInit {
+export class TalkComponent implements OnInit, OnDestroy  {
 
   message: IMessage;
   sendQuery = (value) => {
@@ -77,10 +78,17 @@ export class TalkComponent implements OnInit {
     'Welsh Male'
   ];
 
+  selectedLang: string;
+
   constructor(private TalkService: TalkService) {
+    this.selectedLang = 'Polish Female';
   }
 
   ngOnInit() {
+    document.body.className += ' chat';
   }
 
+  ngOnDestroy() {
+    document.body.className = document.body.className.replace('chat');
+  }
 }

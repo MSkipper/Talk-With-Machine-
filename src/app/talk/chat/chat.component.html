@@ -1,7 +1,7 @@
 <ol class="chat">
-  <li *ngFor="let message of messages" [ngClass]="{'self': message.isUser, 'other': message.isUser }">
-    <div class="avatar" *ngIf="!message.isUser"><img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Robot-512.png" draggable="false"/></div>
-    <div class="avatar" *ngIf="message.isUser"><img src="https://cdn1.iconfinder.com/data/icons/unique-round-blue/93/user-512.png" draggable="false"/></div>
+  <li *ngFor="let message of messages" [ngClass]="{'self': message.isUser, 'other': !message.isUser }">
+    <div class="avatar" *ngIf="!message.isUser"><img src="assets/images/avatar/robot.png" draggable="false"/></div>
+    <div class="avatar" *ngIf="message.isUser"><img src="assets/images/avatar/user.png" draggable="false"/></div>
     <div class="msg">
       <p>{{ message.text }}</p>
       <time>{{ message.date | date: 'hh:mm:ss' }}</time>

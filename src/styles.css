@@ -3,3 +3,6 @@ body {
     padding-top: 50px;
 }
 
+body.chat {
+    background-color: #e5e5e5;
+}

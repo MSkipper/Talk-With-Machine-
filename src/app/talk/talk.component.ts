@@ -25,7 +25,6 @@ export class TalkComponent implements OnInit, OnDestroy  {
     });
   };
 
-  // TODO Voice api service
   languages: Array<String> = [
     'UK English Female',
     'UK English Male',

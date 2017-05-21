@@ -1,0 +1,41 @@
+
+h1{
+    font-size: 2.000em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.125em;
+    margin: 0.469em 0 0.469em;
+}
+
+p{
+    margin-bottom: 1.250em;
+}
+
+.site-header, .site-footer{
+    float: left;
+    width: 100%;
+}
+
+.col-md-4 img {
+    height: 100px;
+}
+
+.col-md-12 img {
+    height: 300px;
+    width: 100%;
+}
+
+.banner-image{
+    margin-bottom: 1.563em;
+}
+
+.site-footer .container{
+    border-top: 0.063em solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.063em solid rgba(0, 0, 0, 0.1);
+    padding: 2.500em 0 1.250em;
+    text-align: center;
+}
+
+.container {
+    margin: 70px 0 0 0;
+}

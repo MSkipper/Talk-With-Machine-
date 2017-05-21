@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ng2-bootstrap": "^1.6.3",
+    "ng2-notify-popup": "github:shubhi1407/ng2-notify-popup",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

@@ -1,10 +1,12 @@
 import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import { SpeechRecognitionService } from './speech-recognition.service';
+import {NotificationService} from "ng2-notify-popup/dist";
 
 @Component({
   selector: 'mt-speech',
   templateUrl: './speech.component.html',
-  styleUrls: ['./speech.component.css']
+  styleUrls: ['./speech.component.css'],
+  providers: [NotificationService]
 })
 
 export class SpeechComponent implements OnInit, OnDestroy {
@@ -13,7 +15,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
   recording: boolean;
   selectedDialect: string;
 
-  constructor(private speechRecognitionService: SpeechRecognitionService) {
+  constructor(private speechRecognitionService: SpeechRecognitionService, private notify: NotificationService) {
     this.recording = false;
     this.selectedDialect = "pl-PL"
   }
@@ -46,7 +48,7 @@ export class SpeechComponent implements OnInit, OnDestroy {
               console.log(err);
               if (err.error == "no-speech") {
                 this.recording = false;
-                this.speakCallback.emit({text: "Nie wykryłem mowy. Wyłączam mikrofon.", lang: "Polish Female"});
+                this.notify.show('Nie wykryłem mowy. Wyłączam mikrofon.', { position:'top', duration: '3000', type: 'error' });
               } else {
 
               }

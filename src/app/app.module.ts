@@ -12,6 +12,8 @@ import { SpeechComponent } from './talk/speech/speech.component';
 import { ChatComponent } from './talk/chat/chat.component';
 import { SpeechRecognitionService } from './talk/speech/speech-recognition.service';
 import {CollapseDirective} from "ng2-bootstrap";
+import {NgNotifyPopup} from "ng2-notify-popup/dist";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const appRoutes: Routes = [
   { path: 'talk', component: TalkComponent },
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    NgNotifyPopup,
+    BrowserAnimationsModule
   ],
   providers: [
     SpeechRecognitionService

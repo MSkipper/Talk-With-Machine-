@@ -118,6 +118,7 @@ export class SpeechRecognitionService {
 
             this.speechRecognition.onresult = speech => {
                 let term: string = "";
+                console.log(speech);
                 if (speech.results) {
                     var result = speech.results[speech.resultIndex];
                     var transcript = result[0].transcript;
@@ -141,7 +142,6 @@ export class SpeechRecognitionService {
                     observer.error(error);
                 });
             };
-
             this.speechRecognition.onend = () => {
                 this.zone.run(() => {
                     observer.complete();

@@ -25,3 +25,25 @@
         fill: #ff001b;
     }
 }
+
+.mic-lang {
+    padding-right: 5px;
+    padding-left: 0;
+}
+
+@media only screen and (max-width:550px) {
+    select {
+        padding: 0;
+    }
+}
+@media only screen and (max-width:300px) {
+    .mic-div {
+        right: -70%;
+    }
+    .mic-lang {
+        top: -20px;
+        width: 100%;
+        right: -10px;
+        /*right: -35%;*/
+    }
+}

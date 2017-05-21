@@ -2,7 +2,7 @@
     <svg:path d="M15 22c2.761 0 5-2.239 5-5v-12c0-2.761-2.239-5-5-5s-5 2.239-5 5v12c0 2.761 2.239 5 5 5zM22 14v3c0 3.866-3.134 7-7 7s-7-3.134-7-7v-3h-2v3c0 4.632 3.5 8.447 8 8.944v4.056h-4v2h10v-2h-4v-4.056c4.5-0.497 8-4.312 8-8.944v-3h-2z"></svg:path>
 </svg:symbol>
 <div>
-    <div class="col-xs-10">
+    <div class="col-xs-10 mic-lang">
         <select class="form-control" id="sel1" [(ngModel)]="selectedDialect">
             <optgroup label="{{ speechLanguage.name }}"  *ngFor="let speechLanguage of speechRecognitionService.speechLanguages">
                 <option *ngFor="let dialect of speechLanguage.dialects" value="{{ dialect.code }}">{{ dialect.name }}</option>

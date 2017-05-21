@@ -39,7 +39,6 @@ export class SpeechComponent implements OnInit, OnDestroy {
               if (value.length) {
                 this.messageCallback.emit({query: value});
               }
-              this.activateSpeech();
             },
             (err) => {
               console.log(err);
@@ -51,7 +50,9 @@ export class SpeechComponent implements OnInit, OnDestroy {
               }
             },
             () => {
-              // this.activateSpeech();
+              if (this.recording) {
+                this.activateSpeech();
+              }
             }
         );
   }

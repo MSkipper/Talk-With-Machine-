@@ -8,6 +8,24 @@ export class Author extends Student implements ProgrammerInterface, GithubUserIn
     protected profession: string;
 
     protected profileImageUrl: URL;
+    protected facebookUrl: URL;
+    protected linkedinUrl: URL;
+
+    set FacebookUrl(url: URL) {
+        this.facebookUrl = url;
+    }
+
+    get FacebookUrl() {
+        return this.facebookUrl;
+    }
+
+    set LinkedinUrl(url: URL) {
+        this.linkedinUrl = url;
+    }
+
+    get LinkedinUrl() {
+        return this.linkedinUrl;
+    }
 
     set ProfileImageUrl(url: URL) {
         this.profileImageUrl = url;

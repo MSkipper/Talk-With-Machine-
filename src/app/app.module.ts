@@ -19,7 +19,10 @@ const appRoutes: Routes = [
   { path: 'talk', component: TalkComponent },
   { path: 'about',component: AboutComponent },
   { path: 'authors', component: AuthorsComponent },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '',
+    redirectTo: '/talk',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

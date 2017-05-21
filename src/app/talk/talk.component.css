@@ -36,6 +36,11 @@ mt-speech {
   max-width: 35%;
 }
 
+.bin {
+    height: 50px;
+    cursor: pointer;
+}
+
 @media only screen and (max-width:550px) {
   mt-speech {
     margin-right: 15px;

@@ -2,16 +2,18 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TalkService} from "./talk.service";
 import {IMessage, IQuery} from "./chat/chat.component";
 import {document} from "ng2-bootstrap/utils/facade/browser";
+import {ChatService} from "./chat/chat.service";
 
 @Component({
   selector: 'app-talk',
   templateUrl: './talk.component.html',
   styleUrls: ['./talk.component.css'],
-  providers: [TalkService]
+  providers: [TalkService, ChatService]
 })
 export class TalkComponent implements OnInit, OnDestroy  {
 
   message: IMessage;
+  messages: IMessage[];
   sendQuery = (value) => {
     this.TalkService.sendQuery(value).subscribe(data => {
       this.TalkService.setConversationId(data.cs);
@@ -80,9 +82,14 @@ export class TalkComponent implements OnInit, OnDestroy  {
 
   selectedLang: string;
 
-  constructor(private TalkService: TalkService) {
+  constructor(private TalkService: TalkService, private chatService: ChatService) {
     this.selectedLang = 'Polish Female';
   }
+
+  clearHistory = () => {
+    this.chatService.clearArchive();
+    this.messages = []
+  };
 
   ngOnInit() {
     document.body.className += ' chat';

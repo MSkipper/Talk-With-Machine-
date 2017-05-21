@@ -5,12 +5,16 @@
     </select>
   </div>
   <div class="col-md-8">
-    <h3>Talk With ME !</h3>
+    <h4>Talk With ME !</h4>
+  </div>
+  <div>
+    <a (click)="clearHistory()"><img class="bin" src="https://cdn3.iconfinder.com/data/icons/cleaning-icons/512/Trash_Can-512.png"/></a>
   </div>
 </div>
 <div class="container">
   <div>
-    <mt-chat #chat (queryCallback)="sendQuery($event)" class="flex-center" [selectedLang]="selectedLang" [message]="message"></mt-chat>
+    <mt-chat #chat (queryCallback)="sendQuery($event)" class="flex-center" [selectedLang]="selectedLang"
+             [messages]= "messages" [message]="message"></mt-chat>
     <mt-speech (messageCallback)="chat.onSubmit($event)" (speakCallback)="chat.speak($event.text, $event.lang)"></mt-speech>
   </div>
 </div>

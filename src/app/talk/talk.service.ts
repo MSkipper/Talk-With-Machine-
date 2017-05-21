@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Response, Jsonp} from "@angular/http";
-
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +9,9 @@ export class TalkService {
   private readonly apiKey: string = 'CC278bVNa8p1RrCAP11dpI4hRoQ';
   private cs: string;
 
-  constructor( private jsonp: Jsonp) { }
+  constructor( private jsonp: Jsonp) {
+
+  }
 
   public sendQuery = (query) => {
     const url = 'http://www.cleverbot.com/getreply';

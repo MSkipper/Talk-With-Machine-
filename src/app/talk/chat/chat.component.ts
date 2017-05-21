@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, Inject} from '@angular/core';
+import {ChatService} from "./chat.service";
 
 export interface IMessage {
   text: string,
@@ -18,7 +19,7 @@ export interface IWindow extends Window{
   selector: 'mt-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
-  providers: [{ provide: 'Window',  useValue: window }]
+  providers: [{ provide: 'Window',  useValue: window }, ChatService]
 })
 
 export class ChatComponent implements OnInit, OnChanges {
@@ -28,9 +29,9 @@ export class ChatComponent implements OnInit, OnChanges {
   @Input() query: string;
   @Input() waitForResponse: boolean = false;
   @Input() selectedLang: string;
-  messages: Array<IMessage> = [];
+  @Input() messages: Array<IMessage> = [];
 
-  constructor(@Inject('Window') private window: IWindow) {
+  constructor(@Inject('Window') private window: IWindow, private chatService: ChatService) {
   }
 
   @Input() onSubmit = (value) => {
@@ -45,17 +46,20 @@ export class ChatComponent implements OnInit, OnChanges {
 };
 
   ngOnInit() {
+    this.messages = JSON.parse(this.chatService.getArchive()) || [];
   }
 
   ngOnChanges(changes) {
     if (changes.message) {
       if (this.message) {
         this.speak(this.message.text,this.selectedLang);
-        this.messages.push({
+        const msg = {
           text: this.message.text,
           date: new Date(),
           isUser: false
-        });
+        };
+        this.messages.push(msg);
+        this.chatService.setArchive(this.messages)
       }
     }
   }

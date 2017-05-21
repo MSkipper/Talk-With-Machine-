@@ -1,4 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter, OnChanges, Inject} from '@angular/core';
+import {
+    Component, OnInit, Input, Output, EventEmitter, OnChanges, Inject, AfterContentInit,
+    AfterContentChecked, AfterViewInit
+} from '@angular/core';
 import {ChatService} from "./chat.service";
 
 export interface IMessage {
@@ -22,7 +25,7 @@ export interface IWindow extends Window{
   providers: [{ provide: 'Window',  useValue: window }, ChatService]
 })
 
-export class ChatComponent implements OnInit, OnChanges {
+export class ChatComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Output() queryCallback = new EventEmitter();
   @Input() message: IMessage;
@@ -42,8 +45,13 @@ export class ChatComponent implements OnInit, OnChanges {
       isUser: true
     });
     this.queryCallback.emit(value);
-    this.query = ''
+    this.query = '';
+    this.scrollToBottom()
 };
+
+  ngAfterViewInit() {
+    this.window.scrollTo(0,document.body.scrollHeight);
+  }
 
   ngOnInit() {
     this.messages = JSON.parse(this.chatService.getArchive()) || [];
@@ -59,7 +67,8 @@ export class ChatComponent implements OnInit, OnChanges {
           isUser: false
         };
         this.messages.push(msg);
-        this.chatService.setArchive(this.messages)
+        this.chatService.setArchive(this.messages);
+        this.scrollToBottom()
       }
     }
   }
@@ -70,6 +79,12 @@ export class ChatComponent implements OnInit, OnChanges {
       onend: () => {
         this.waitForResponse = false;
       }
+    });
+  }
+
+  private scrollToBottom = () => {
+    setTimeout(function() {
+      this.window.scrollTo(0,document.body.scrollHeight);
     });
   }
 

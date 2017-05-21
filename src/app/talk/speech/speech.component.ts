@@ -22,6 +22,8 @@ export class SpeechComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.recording = false;
+    this.speechRecognitionService.stop();
     this.speechRecognitionService.DestroySpeechObject();
   }
 

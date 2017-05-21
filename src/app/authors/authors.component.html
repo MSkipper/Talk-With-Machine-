@@ -1,6 +1,24 @@
-<p>
-  authors works!
-</p>
-<pre>
-  {{ students|json }}
-</pre>
+<section class="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6" *ngFor="let author of authors">
+        <div class="team-single text-center">
+          <img src="{{author.ProfileImageUrl}}" class="img-responsive center-block" alt="Team Member">
+          <h2>{{ author.FirstName }} {{author.LastName}}</h2>
+          <h3>{{ author.Profession }}</h3>
+
+          <ng-container *ngIf="author.Skills.length">
+            <h4>{{ author.Skills|json }}</h4>
+          </ng-container>
+
+          <ul class="list-inline">
+            <li><a href=""><i class="fa fa-facebook brand-color"></i></a></li>
+            <li><a href="{{ author.GithubUrl }}"><i class="fa fa-github brand-color"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus brand-color"></i></a></li>
+            <li><a href=""><i class="fa fa-linkedin brand-color"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

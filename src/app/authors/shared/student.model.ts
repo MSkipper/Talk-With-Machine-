@@ -1,10 +1,10 @@
-import {StudentInterface} from "./StudentInterface";
-import {AbstractUser} from "./AbstractUser";
+import {StudentInterface} from "./student.interface";
+import {AbstractUser} from "./user.abstract";
 
 export class Student extends AbstractUser implements StudentInterface {
-    protected indeks: number;
+    protected indeks: string;
 
-    constructor (firtName: string, lastName: string, email: string, indeks: number) {
+    constructor (firtName: string, lastName: string, email: string, indeks: string) {
         super();
         this.firstName = firtName;
         this.lastName = lastName;
@@ -12,11 +12,11 @@ export class Student extends AbstractUser implements StudentInterface {
         this.indeks = indeks;
     };
 
-    getIndeks(): number {
+    getIndeks(): string {
         return this.indeks;
     }
 
-    setIndeks(indeks: number) {
+    setIndeks(indeks: string) {
         this.indeks = indeks;
 
         return this;

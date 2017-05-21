@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Student} from "./Student";
+import {Student} from "./shared/student.model";
+import {Author} from "./shared/author.model";
 
 @Component({
   selector: 'app-authors',
@@ -8,23 +9,29 @@ import {Student} from "./Student";
 })
 
 export class AuthorsComponent implements OnInit {
-  students: Array<Student> = [];
-
+  authors: Array<Author> = [];
 
   constructor() {
-    let firstStudnet = new Student('Andrzej', 'Piszczek', 'andpis58@gmail.com', 174644);
+    let andrzej = new Author("Andrzej", "Piszczek", "andpis58@gmail.com", "174644");
+    let mikolaj = new Author('Mikołaj', 'Sikorski', 'mik.sikorski@gmail.com', "174906");
 
     //which convecnion is correct?
-    firstStudnet
-        .setIndeks(174644)
+    andrzej
+        .setIndeks("174644")
         .FirstName = 'Andrzej';
-    firstStudnet.LastName = 'Piszczek';
-    firstStudnet.Email = 'andpis58@gmail.com';
+    andrzej.Profession = 'Full stack developer';
+    andrzej.Skills = ['PHP', 'JS', 'Symfony', 'Rest'];
+    andrzej.GithubUrl = new URL('https://github.com/piszczek/');
+    andrzej.ProfileImageUrl = new URL('https://avatars1.githubusercontent.com/u/9069664?v=3&s=460');
 
-    let secondStudent =
-        new Student('Mikołaj', 'Sikorski', 'mik.sikorski@gmail.com', 123456);
-
-    this.students.push(firstStudnet, secondStudent);
+    mikolaj.Profession = 'Front-end developer';
+    mikolaj.Skills = ['JS', 'Angular', 'Rest'];
+    mikolaj.GithubUrl = new URL('https://github.com/MSkipper/');
+    mikolaj.ProfileImageUrl = new URL('https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAJZAAAAJGZlY2MyZjQwLTA4NmEtNDczZS05MTllLTQ0MjVhYTg0NzRjYw.jpg');
+    this.authors.push(
+        andrzej,
+        mikolaj
+    );
   }
 
   ngOnInit() {

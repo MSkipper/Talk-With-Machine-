@@ -152,7 +152,9 @@ export class SpeechRecognitionService {
         });
     }
     stop() {
-        this.speechRecognition.stop();
+        if (this.speechRecognition) {
+            this.speechRecognition.stop();
+        }
     }
     DestroySpeechObject() {
         if (this.speechRecognition)

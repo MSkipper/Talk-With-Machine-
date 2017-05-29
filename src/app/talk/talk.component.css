@@ -39,6 +39,11 @@ mt-speech {
 .bin {
     height: 50px;
     cursor: pointer;
+    opacity: 0.5;
+}
+
+.bin:hover {
+  opacity: 1;
 }
 
 @media only screen and (max-width:550px) {

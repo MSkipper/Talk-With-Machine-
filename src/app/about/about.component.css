@@ -19,13 +19,8 @@ p{
     height: 100px;
 }
 
-.col-md-12 img {
-    height: 300px;
-    width: 100%;
-}
-
-.banner-image{
-    margin-bottom: 1.563em;
+.col-md-12 {
+    margin-bottom: 60px;
 }
 
 .site-footer .container{
